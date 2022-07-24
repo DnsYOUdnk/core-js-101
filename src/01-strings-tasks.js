@@ -18,8 +18,8 @@
  *   'aa',''    => 'aa'
  *   '',  'bb'  => 'bb'
  */
-function concatenateStrings(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function concatenateStrings(value1, value2) {
+  return value1 + value2;
 }
 
 
@@ -34,8 +34,8 @@ function concatenateStrings(/* value1, value2 */) {
  *   'b'     => 1
  *   ''      => 0
  */
-function getStringLength(/* value */) {
-  throw new Error('Not implemented');
+function getStringLength(value) {
+  return value.length;
 }
 
 /**
@@ -277,17 +277,17 @@ function getCardId(/* value */) {
 module.exports = {
   concatenateStrings,
   getStringLength,
-  getStringFromTemplate,
-  extractNameFromTemplate,
-  getFirstChar,
-  removeLeadingAndTrailingWhitespaces,
-  repeatString,
-  removeFirstOccurrences,
-  unbracketTag,
-  convertToUpperCase,
-  extractEmails,
-  getRectangleString,
-  encodeToRot13,
-  isString,
-  getCardId,
+  // getStringFromTemplate,
+  // extractNameFromTemplate,
+  // getFirstChar,
+  // removeLeadingAndTrailingWhitespaces,
+  // repeatString,
+  // removeFirstOccurrences,
+  // unbracketTag,
+  // convertToUpperCase,
+  // extractEmails,
+  // getRectangleString,
+  // encodeToRot13,
+  // isString,
+  // getCardId,
 };
