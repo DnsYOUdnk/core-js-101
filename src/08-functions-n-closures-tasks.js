@@ -157,8 +157,8 @@ function retry(func, attempts) {
  * cos(3.141592653589793) ends
  *
  */
-function logger(func, logFunc) {
-  
+function logger(/* func, logFunc */) {
+  throw new Error('Not implemented');
 }
 
 
