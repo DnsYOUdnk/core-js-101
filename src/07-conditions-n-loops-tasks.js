@@ -300,15 +300,13 @@ function isCreditCardNumber(ccn) {
       const num = item * 2;
       if (String(num).length === 2) {
         return String(num).split('').reduce((sum, a) => sum + +a, 0);
-      } return num;
+      }
+      return num;
     }
     return item;
   });
   const numRes = numArr.reduce((sum, a) => sum + a, 0);
-  if (numRes % 10 === 0) {
-    return true;
-  }
-  return false;
+  return numRes % 10 === 0;
 }
 
 /**
@@ -352,8 +350,25 @@ function getDigitalRoot(num) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-function isBracketsBalanced(/* str */) {
-  throw new Error('Not implemented');
+function isBracketsBalanced(str) {
+  if (str.length % 2 !== 0) return false;
+  if (str === '') return true;
+  const matches = {
+    '[': ']',
+    '(': ')',
+    '{': '}',
+    '<': '>',
+  };
+  const arrSymb = [];
+  let notBalanced = false;
+  str.split('').forEach((symb) => {
+    if (matches[symb]) {
+      arrSymb.push(symb);
+    } else if (symb !== matches[arrSymb.pop()]) {
+      notBalanced = true;
+    }
+  });
+  return notBalanced ? false : arrSymb.length === 0;
 }
 
 
@@ -394,8 +409,15 @@ function toNaryString(num, n) {
  *   ['/web/assets/style.css', '/.bin/mocha',  '/read.me'] => '/'
  *   ['/web/favicon.ico', '/web-scripts/dump', '/verbalizer/logs'] => '/'
  */
-function getCommonDirectoryPath(/* pathes */) {
-  throw new Error('Not implemented');
+function getCommonDirectoryPath(pathes) {
+  const arr = pathes[0].split('/');
+  const result = [];
+  for (let j = 0; j < arr.length; j += 1) {
+    const answ = pathes.every((path) => path.split('/')[j] === arr[j]);
+    if (!answ) break;
+    result.push(arr[j]);
+  }
+  return result.length === 0 ? '' : `${result.join('/')}/`;
 }
 
 
@@ -417,8 +439,20 @@ function getCommonDirectoryPath(/* pathes */) {
  *                         [ 6 ]]
  *
  */
-function getMatrixProduct(/* m1, m2 */) {
-  throw new Error('Not implemented');
+function getMatrixProduct(m1, m2) {
+  const result = [];
+  for (let i = 0; i < m1.length; i += 1) {
+    const arr = [];
+    for (let j = 0; j < m2[i].length; j += 1) {
+      let el = 0;
+      for (let k = 0; k < m1[j].length; k += 1) {
+        el += m1[i][k] * m2[k][j];
+      }
+      arr.push(el);
+    }
+    result.push(arr);
+  }
+  return result;
 }
 
 
