@@ -486,8 +486,28 @@ function getMatrixProduct(m1, m2) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(position) {
+  const combinateWinner = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  let result;
+  const arr1 = position.map((arr) => {
+    const newArr = arr.length === 3 ? [...arr] : [...arr, undefined];
+    return newArr.reduce((sum, a) => sum + (!a ? '_' : a), '');
+  }).join('');
+  combinateWinner.forEach((el) => {
+    if (arr1[el[0]] + arr1[el[1]] + arr1[el[2]] === 'XXX' || arr1[el[0]] + arr1[el[1]] + arr1[el[2]] === '000') {
+      result = arr1[el[0]];
+    }
+  });
+  return result;
 }
 
 
